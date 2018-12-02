@@ -4,9 +4,12 @@ import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-/***
- * 控制viewPage不能滑动  还需要改成和这个类名相同的XML文件名
- */
+/**
+*  @author lcc
+*  created at 2018/12/3
+ *
+ *  控制viewPage不能滑动  还需要改成和这个类名相同的XML文件名
+*/
 public class ControlScrollViewPager extends ViewPager {
 
     private boolean isCanScroll = true;

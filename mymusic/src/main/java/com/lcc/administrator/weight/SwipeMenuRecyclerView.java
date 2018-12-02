@@ -12,6 +12,7 @@ import android.widget.Scroller;
 import android.widget.TextView;
 
 import com.lcc.administrator.adapter.RVAdapter;
+import com.lcc.administrator.mymusic.OnItemActionListener;
 
 /**
  * @author lcc
@@ -50,12 +51,14 @@ public class SwipeMenuRecyclerView extends RecyclerView {
     private static final int MENU_WILL_CLOSED = 1;
     private static final int MENU_OPEN = 2;
     private static final int MENU_WILL_OPEN = 3;
-
+    //适配器
     private RVAdapter.Holder holder;
+    private OnItemActionListener onItemActionListener;
 
     public SwipeMenuRecyclerView(Context context) {
         super(context, null);
         mScroller = new Scroller(context, new LinearInterpolator());
+        initClickListener();
     }
 
     public SwipeMenuRecyclerView(Context context, AttributeSet attrs) {
@@ -144,9 +147,9 @@ public class SwipeMenuRecyclerView extends RecyclerView {
                 break;
             case MotionEvent.ACTION_UP:
                 //手指抬起时判断是否点击,静止才有Listener才能点击
-//                if (!isItemMoving && !isDragging && mListener != null) {
-//                    mListener.OnItemClick(mPosition);
-//                }
+                if (!isItemMoving && !isDragging && onItemActionListener!= null) {
+                    onItemActionListener.OnItemClick(mPosition);
+                }
                 isItemMoving = false;
                 //等一下控件要自动展开的距离（控件未展示出来的部分）
                 int deltaX = 0;
@@ -202,5 +205,37 @@ public class SwipeMenuRecyclerView extends RecyclerView {
         super.onScrollStateChanged(state);
         //是否在上下滑动
         isDragging = state == SCROLL_STATE_DRAGGING;
+    }
+
+    /**
+     *
+     * @param onItemActionClickListener
+     */
+    public void setOnItemActionClickListener(OnItemActionListener onItemActionClickListener){
+        this.onItemActionListener = onItemActionClickListener;
+    }
+
+    /**
+     *
+     */
+    public void initClickListener(){
+        tv_top.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onItemActionListener.OnItemTop(mPosition);
+            }
+        });
+        tv_delete.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onItemActionListener.OnItemDelete(mPosition);
+            }
+        });
+        iv_share.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onItemActionListener.OnItemShare(mPosition);
+            }
+        });
     }
 }
