@@ -89,17 +89,17 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                switch (view.getId()) {
-                    case R.id.layout_music: //音乐
-                        setSelectedPage(0);
-                        break;
-                    case R.id.layout_contacts: //通讯录
-                        setSelectedPage(1);
-                        break;
-                    case R.id.layout_conversation: //会话
-                        setSelectedPage(2);
-                        break;
-                }
+            switch (view.getId()) {
+                case R.id.layout_music: //音乐
+                    setSelectedPage(0);
+                    break;
+                case R.id.layout_contacts: //通讯录
+                    setSelectedPage(1);
+                    break;
+                case R.id.layout_conversation: //会话
+                    setSelectedPage(2);
+                    break;
+            }
             }
         };
         //为每个线性布局添加事件
@@ -153,7 +153,6 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * 滑动ViewPage 改变TabButton的样式
-     *
      */
     private void setViewPagerSelectedTabButtonChange() {
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

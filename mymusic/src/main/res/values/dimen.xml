@@ -1,7 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- layout tab Button -->
     <dimen name="layout_tab_height">80dp</dimen>
     <dimen name="layout_button_width">0dp</dimen>
 
+    <!-- recyclerView -->
+    <dimen name="layout_frame_height">65dp</dimen>
+    <dimen name="layout_item_parent_marginRight">-176dp</dimen>
+
+    <!-- 是否正在播放 -->
+    <dimen name="view_height">60dp</dimen>
+    <dimen name="view_width">3dp</dimen>
+    <dimen name="view_margin_left">2dp</dimen>
+    <dimen name="view_margin_top">2dp</dimen>
+
+    <!-- 头像 -->
+    <dimen name="iv_album_width">60dp</dimen>
+    <dimen name="iv_album_height">60dp</dimen>
+    <dimen name="iv_album_margin_left">6dp</dimen>
+    <dimen name="iv_album_margin_top">2dp</dimen>
+
+    <!-- 歌名 -->
+    <dimen name="tv_title_height">25dp</dimen>
+    <dimen name="tv_title_margin_top">8dp</dimen>
+    <dimen name="tv_title_margin_left">20dp</dimen>
+    <dimen name="tv_title_size">18sp</dimen>
+
+    <!-- 歌手 -->
+    <dimen name="tv_artist_height">20dp</dimen>
+    <dimen name="iv_artist_margin_left">20dp</dimen>
+    <dimen name="iv_artist_margin_top">4dp</dimen>
+
+    <!-- 分享 -->
+    <dimen name="iv_share_height">30dp</dimen>
+    <dimen name="iv_share_margin_right">3dp</dimen>
+
+    <!-- item -->
+    <dimen name="tv_top_width">88dp</dimen>
+    <dimen name="tv_delete_width">88dp</dimen>
+    <dimen name="textView_itemSize">18sp</dimen>
+
     <dimen name="textView_TextSize">25sp</dimen>
+
 </resources>

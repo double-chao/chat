@@ -6,4 +6,7 @@
 
     <color name="tabButton_textColor_selected">#008800</color>
     <color name="tabButton_textColor_default">#000</color>
+
+    <color name="textView_textColor">#fff</color>
+    <color name="redIsPlaying">#ff3456</color>
 </resources>

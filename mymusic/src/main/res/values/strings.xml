@@ -4,4 +4,10 @@
     <string name="tab_button_music">音乐</string>
     <string name="tab_button_contacts">通讯录</string>
     <string name="tab_button_conversation">会话</string>
+
+    <string name="tv_top">顶置</string>
+    <string name="tv_delete">删除</string>
+
+    <string name="tv_title">成都</string>
+    <string name="tv_artist">赵雷</string>
 </resources>
