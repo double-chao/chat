@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/layout_tab_height"
+    android:layout_alignParentBottom="true"
+    android:background="@drawable/background"
+    android:orientation="horizontal"
+    android:id="@+id/layout_tab">
+
+    <LinearLayout
+        android:id="@+id/layout_music"
+        android:layout_width="@dimen/layout_button_width"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:duplicateParentState="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_music"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/tab_button_music"
+            android:textColor="@drawable/tab_textview_selected"
+            android:textSize="@dimen/textView_TextSize" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_contacts"
+        android:layout_width="@dimen/layout_button_width"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:duplicateParentState="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_contacts"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/tab_button_contacts"
+            android:textColor="@drawable/tab_textview_selected"
+            android:textSize="@dimen/textView_TextSize" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_conversation"
+        android:layout_width="@dimen/layout_button_width"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:duplicateParentState="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_conversation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/tab_button_conversation"
+            android:textColor="@drawable/tab_textview_selected"
+            android:textSize="@dimen/textView_TextSize" />
+    </LinearLayout>
+
+</LinearLayout>

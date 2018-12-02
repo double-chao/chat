@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#333333</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#45c01a</color>
+    <color name="windowBackground">#DCDCDC</color>
+    <color name="textColorPrimary">#fff</color>
+    <color name="colorControlNormal">#fff</color>
+
+    <color name="tabButton_textColor_Select">#008800</color>
+    <color name="tabButton_textColor_default">#000</color>
+    <color name="headerLetter">#c0c0c0</color>
+
+    <color name="nickName">#000</color>
+    <color name="listView_textColor">#c0c0c0</color>
+    <color name="popup_textColor">#000</color>
+
+    <color name="lineColor">#000</color>
+
+    <color name="login_btn_selected">#006600</color>
+    <color name="login_btn_enbale">#0f0</color>
+    <color name="login_btn_disable">#009900</color>
+
+    <color name="btn_addFriend">#009900</color>
+    <color name="editText_background">#fff</color>
+    <color name="edit_TextColor">#000</color>
+</resources>

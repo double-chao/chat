@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:gravity="center_vertical">
+
+    <ImageView
+        android:id="@+id/iv_avatar"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="8dp"
+        android:src="@drawable/avatar" />
+
+    <TextView
+        android:id="@+id/tv_nickName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="3dp"
+        android:layout_toRightOf="@+id/iv_avatar"
+        android:text="昵称"
+        android:textColor="@color/nickName" />
+
+    <TextView
+        android:id="@+id/tv_last_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_nickName"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="3dp"
+        android:layout_toLeftOf="@+id/tv_time"
+        android:layout_toRightOf="@+id/iv_avatar"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="kjfjfkdsjfkjkfjkdfjkfjdjfkkfdkjfkjdkfjkjhghgghkjfjfffdef"
+        android:textColor="@color/listView_textColor" />
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="3dp"
+        android:text="9月18号"
+        android:textColor="@color/listView_textColor" />
+
+</RelativeLayout>

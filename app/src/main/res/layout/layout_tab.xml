@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:layout_alignParentBottom="true"
+    android:background="@drawable/background"
+    android:orientation="horizontal"
+    tools:context=".chat.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/layout_chat"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:duplicateParentState="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_chat"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:src="@drawable/icon_chat_selected" />
+
+        <TextView
+            android:id="@+id/tv_chat"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:gravity="center"
+            android:text="我的微信"
+            android:textColor="@drawable/tab_textview_selected"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout_contacts"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:duplicateParentState="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_contacts"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:src="@drawable/icon_contacts_selected" />
+
+        <TextView
+            android:id="@+id/tv_contacts"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:gravity="center"
+            android:text="通讯录"
+            android:textColor="@drawable/tab_textview_selected"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout_find"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:duplicateParentState="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_find"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:src="@drawable/icon_find_selected" />
+
+        <TextView
+            android:id="@+id/tv_find"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:gravity="center"
+            android:text="发现"
+            android:textColor="@drawable/tab_textview_selected"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout_about_me"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:duplicateParentState="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_about_me"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:src="@drawable/icon_about_me_selected" />
+
+        <TextView
+            android:id="@+id/tv_about_me"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:gravity="center"
+            android:text="我"
+            android:textColor="@drawable/tab_textview_selected"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+
+</LinearLayout>

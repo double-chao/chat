@@ -1,0 +1,49 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="AppTheme.Base">
+        <!-- Customize your theme here. -->
+
+        <!-- 操作栏的颜色 -->
+        <item name="android:colorPrimary">@color/colorPrimary</item>
+
+        <!-- 通知栏背景色 -->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+
+        <!-- 控件获取焦点颜色 -->
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- 窗口的背景色 -->
+        <item name="android:windowBackground">@color/windowBackground</item>
+
+        <!--标题字体颜色-->
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+
+        <!-- 图标的颜色 -->
+        <item name="android:colorControlNormal">@color/colorControlNormal</item>
+
+        <!-- 溢出菜单样式 -->
+        <item name="android:actionOverflowMenuStyle">@style/AppTheme.OverflowMenuStyle</item>
+
+        <!-- 分割线样式 -->
+        <item name="android:dropDownListViewStyle">@style/PopupMenuListView</item>
+    </style>
+
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar"></style>
+
+    <!-- 自定义溢出菜单属性 -->
+    <style name="AppTheme.OverflowMenuStyle" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
+        <!-- 不覆盖工具栏 -->
+        <item name="overlapAnchor">false</item>
+        <item name="android:dropDownWidth">wrap_content</item>
+        <item name="android:popupBackground">@color/colorPrimary</item>
+        <item name="android:textColor">@color/popup_textColor</item>
+    </style>
+
+    <!-- 分割线属性 -->
+    <style name="PopupMenuListView" parent="@android:style/Widget.Holo.ListView.DropDown">
+        <item name="divider">@color/lineColor</item>
+        <item name="android:dividerHeight">1px</item>
+    </style>
+
+</resources>

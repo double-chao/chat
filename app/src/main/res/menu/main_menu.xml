@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_search"
+        android:title="@string/action_search"
+        app:showAsAction="ifRoom">
+    </item>
+
+    <item
+        android:id="@+id/action_newChat"
+        android:icon="@drawable/tab_contacts_pressed"
+        android:title="@string/action_newChat"
+        app:showAsAction="never">
+    </item>
+
+    <item
+        android:id="@+id/action_addFriend"
+        android:icon="@drawable/tab_contacts_pressed"
+        android:title="@string/action_addFriend"
+        app:showAsAction="never">
+    </item>
+
+</menu>

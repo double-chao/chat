@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="layout_tab_height">80dp</dimen>
+    <dimen name="layout_button_width">0dp</dimen>
+
+    <dimen name="textView_TextSize">25sp</dimen>
+</resources>

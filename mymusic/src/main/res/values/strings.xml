@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Application</string>
+
+    <string name="tab_button_music">音乐</string>
+    <string name="tab_button_contacts">通讯录</string>
+    <string name="tab_button_conversation">会话</string>
+</resources>
