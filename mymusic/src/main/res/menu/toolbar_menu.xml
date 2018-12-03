@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/chat"
+        android:title="@string/menu_item_chat">
+    </item>
+    <item android:id="@+id/add_contact"
+        android:title="@string/menu_item_add_contact">
+    </item>
+</menu>

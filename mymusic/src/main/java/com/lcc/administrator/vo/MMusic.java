@@ -16,10 +16,12 @@ public class MMusic {
     //专辑名
     public String album;
     //是否正在播放
-    private boolean isPlaying;
+    public boolean isPlaying;
     //专辑图片
     public Bitmap albumBip;
+    //歌曲时间总长
     private int length;
+    //歌曲的路径
     private String path;
 
     public int getLength() {

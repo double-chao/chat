@@ -17,6 +17,8 @@ import com.lcc.administrator.mymusic.OnItemActionListener;
 /**
  * @author lcc
  * created at 2018/12/2
+ *
+ * 自定义音乐Menu的布局
  */
 public class SwipeMenuRecyclerView extends RecyclerView {
 
@@ -53,12 +55,12 @@ public class SwipeMenuRecyclerView extends RecyclerView {
     private static final int MENU_WILL_OPEN = 3;
     //适配器
     private RVAdapter.Holder holder;
+    //
     private OnItemActionListener onItemActionListener;
 
     public SwipeMenuRecyclerView(Context context) {
         super(context, null);
         mScroller = new Scroller(context, new LinearInterpolator());
-        initClickListener();
     }
 
     public SwipeMenuRecyclerView(Context context, AttributeSet attrs) {
@@ -103,6 +105,7 @@ public class SwipeMenuRecyclerView extends RecyclerView {
                     iv_share = holder.iv_share;
                     //获取两个按钮的宽度
                     mMaxLength = tv_top.getWidth() + tv_delete.getWidth();
+                    initClickListener();
                 }else if(mMenuState == MENU_OPEN){
                     //(mItemLayout获取在Activity左边界的值/也就是滑动的距离
                     // dx:在X轴上的偏移量,  dy:在y轴上的偏移量,  时间)
@@ -216,21 +219,24 @@ public class SwipeMenuRecyclerView extends RecyclerView {
     }
 
     /**
-     *
+     *  为item设置点击事件
      */
     public void initClickListener(){
+        //顶置
         tv_top.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 onItemActionListener.OnItemTop(mPosition);
             }
         });
+        //删除
         tv_delete.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 onItemActionListener.OnItemDelete(mPosition);
             }
         });
+        //分享
         iv_share.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -9,4 +9,5 @@
 
     <color name="textView_textColor">#fff</color>
     <color name="redIsPlaying">#ff3456</color>
+    <color name="tvColor_notification">#000</color>
 </resources>

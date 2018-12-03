@@ -14,11 +14,21 @@ import com.lcc.administrator.vo.MMusic;
 
 import java.util.List;
 
+/**
+*  @author lcc
+*  created at 2018/12/3
+ *  音乐Menu的适配器
+*/
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.Holder> {
 
     private Context context;
     private List<MMusic> musicList;
 
+    /**
+     *
+     * @param context
+     * @param musicList
+     */
     public RVAdapter(Context context, List<MMusic> musicList) {
         this.musicList = musicList;
         this.context = context;
@@ -64,7 +74,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.Holder> {
         public ImageView iv_share;
 
         public View iv_isPlayingView;
-
+        //Menu的布局
         public FrameLayout frameLayout;
 
         public Holder(View itemView) {

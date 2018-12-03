@@ -10,4 +10,7 @@
 
     <string name="tv_title">成都</string>
     <string name="tv_artist">赵雷</string>
+
+    <string name="menu_item_chat">发起群聊</string>
+    <string name="menu_item_add_contact">添加好友</string>
 </resources>
