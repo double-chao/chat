@@ -334,7 +334,7 @@ public class MMusicActivity extends AppCompatActivity implements View.OnClickLis
                     position = 0;
                     setPlayModeStyle();
                 }
-            } else if (position == 0) {
+            }else if (position == 0) {
                 if (buttonWitch == 1) { //上一曲
                     position = Common.mMusicList.size() - 1;
                     setPlayModeStyle();
