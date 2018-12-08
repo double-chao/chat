@@ -3,6 +3,7 @@ package com.lcc.administrator.mymusic;
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
@@ -16,13 +17,43 @@ import java.io.IOException;
 */
 public class MMusicService extends Service {
 
-    private MediaPlayer mediaPlayer = new MediaPlayer();
+    public static MediaPlayer mediaPlayer = new MediaPlayer();
     private int position;
+
+//    private final IBinder iBinder = new MusicBinder();
+
+    public MMusicService (){
+
+    }
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
         return null;
     }
+
+//    class MusicBinder extends Binder{
+//
+//        public MMusicService getService(){
+//            return MMusicService.this;
+//        }
+//    }
+//
+
+
+//    public void playMusic(String path){
+//        if(mediaPlayer.isPlaying()){
+//            mediaPlayer.stop();
+//        }
+//        mediaPlayer.reset();
+//        try {
+//            mediaPlayer.setDataSource(path);
+//            mediaPlayer.prepare();
+//            mediaPlayer.start();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     @Override
     public boolean onUnbind(Intent intent) {
@@ -35,12 +66,18 @@ public class MMusicService extends Service {
         position= intent.getIntExtra("position",0);
         String path = Common.mMusicList.get(position).getPath();
         try {
-            mediaPlayer.setDataSource(path);
-            mediaPlayer.prepare();
+            if(mediaPlayer.isPlaying()){
+                mediaPlayer.setDataSource(path);
+                mediaPlayer.prepare();
+                mediaPlayer.pause();
+            }else {
+                mediaPlayer.setDataSource(path);
+                mediaPlayer.prepare();
+                mediaPlayer.start();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        mediaPlayer.start();
         super.onCreate();
     }
 
