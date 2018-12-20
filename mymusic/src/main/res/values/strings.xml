@@ -13,4 +13,48 @@
 
     <string name="menu_item_chat">发起群聊</string>
     <string name="menu_item_add_contact">添加好友</string>
+
+
+    <string-array name="nickNameArray">
+        <item>A就蒋经国</item>
+        <item>安安</item>
+        <item>啊发发</item>
+        <item>必定</item>
+        <item>波特</item>
+        <item>博客</item>
+        <item>触摸</item>
+        <item>从么个</item>
+        <item>测光</item>
+        <item>对的</item>
+        <item>打开</item>
+        <item>德国人</item>
+        <item>恶狠狠</item>
+        <item>饿哦看看</item>
+        <item>飞机案件</item>
+        <item>发咯就</item>
+        <item>狗妈妈</item>
+        <item>郭培考</item>
+        <item>喝啊</item>
+        <item>和里哦及</item>
+        <item>哦</item>
+        <item>偶尔的</item>
+        <item>怕发</item>
+        <item>在</item>
+        <item>泣去</item>
+        <item>去谔谔</item>
+        <item>人流量人口</item>
+        <item>然后回国</item>
+        <item>是咯就</item>
+        <item>时空看见过</item>
+        <item>她她她</item>
+        <item>脱离苦海</item>
+        <item>我</item>
+        <item>这种</item>
+        <item>322223</item>
+        <item>*飞机开发</item>
+        <item>#jfj</item>
+        <item>jkjk223</item>
+        <item>09j4j</item>
+        <item>09*</item>
+    </string-array>
 </resources>

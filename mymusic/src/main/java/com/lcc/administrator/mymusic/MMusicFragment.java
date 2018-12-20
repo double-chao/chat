@@ -1,5 +1,7 @@
 package com.lcc.administrator.mymusic;
 
+
+import android.Manifest;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -25,11 +27,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RemoteViews;
 import android.widget.Toast;
-
 import com.lcc.administrator.adapter.RVAdapter;
 import com.lcc.administrator.vo.Common;
 import com.lcc.administrator.vo.MMusic;
 import com.lcc.administrator.weight.SwipeMenuRecyclerView;
+import com.liuguangqiang.permissionhelper.PermissionHelper;
 
 /**
  * @author lcc
@@ -45,17 +47,18 @@ public class MMusicFragment extends Fragment {
     private String channelId = "123";
     //这是其name  最好是汉字
     private String channelName = "超超";
-
+    //自定义item滑动控件
     private SwipeMenuRecyclerView swipeMenuRecyclerView;
     private RVAdapter adapter;
+    private PermissionHelper permissionHelper;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_music, container, false);
+        getStoragePermission();
         initRecyclerView(rootView);
-        initMusicData();
         return rootView;
     }
 
@@ -91,9 +94,9 @@ public class MMusicFragment extends Fragment {
                 //刷新界面
                 adapter.notifyDataSetChanged();
                 //跳转activity
-                Intent intent = new Intent(getActivity(),MMusicActivity.class);
+                Intent intent = new Intent(getActivity(), MMusicActivity.class);
                 //
-                intent.putExtra("position",position);
+                intent.putExtra("position", position);
 
                 //创建延时意图  传入intent对象（要跳转到的activity）
                 PendingIntent pendingIntent = PendingIntent.getActivity(getActivity(),
@@ -160,12 +163,17 @@ public class MMusicFragment extends Fragment {
 
             @Override
             public void OnItemTop(int position) {
+//                MMusic music = Common.mMusicList.get(position);
+//                Common.mMusicList.remove(position);
+//                Common.mMusicList.add(0,music);
+//                adapter.notifyDataSetChanged();
                 Toast.makeText(getActivity(), "点击了顶置", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void OnItemDelete(int position) {
-                Toast.makeText(getActivity(), "点击了删除", Toast.LENGTH_SHORT).show();
+                Common.mMusicList.remove(position);
+                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -176,8 +184,24 @@ public class MMusicFragment extends Fragment {
     }
 
     /**
-     * 初始化音乐数据 ，
-     * 暂时没有配置安卓6.0以上的要获取存取权限的代码，只在清单文件中写了权限
+     * 获取权限
+     */
+    public void getStoragePermission(){
+        permissionHelper = PermissionHelper.getInstance();
+        permissionHelper.requestPermission(getActivity(),new String(Manifest.permission.READ_EXTERNAL_STORAGE));
+        initMusicData();
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(permissionHelper !=null){
+            permissionHelper.onRequestPermissionsResult(requestCode,permissions,grantResults);
+        }
+    }
+
+    /**
+     * 初始化音乐数据 ，要配置安卓6.0以上的要获取存取权限的代码
+     *
      */
     private void initMusicData() {
         Common.mMusicList.clear();
@@ -240,7 +264,7 @@ public class MMusicFragment extends Fragment {
             album_art = cur.getString(0);
         }
         cur.close();
-        Bitmap bm = null;
+        Bitmap bm;
         if (album_art != null) {
             bm = BitmapFactory.decodeFile(album_art);
         } else {
@@ -252,6 +276,6 @@ public class MMusicFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        adapter.notifyDataSetChanged();
+//        adapter.notifyDataSetChanged();
     }
 }

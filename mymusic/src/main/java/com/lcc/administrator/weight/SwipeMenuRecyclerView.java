@@ -85,6 +85,10 @@ public class SwipeMenuRecyclerView extends RecyclerView {
         int y = (int) e.getY();
         switch (e.getAction()) {
             case MotionEvent.ACTION_DOWN: //按下
+                //优化滑动
+                if (!mScroller.isFinished()) {
+                    mScroller.abortAnimation();
+                }
                 //Menu关闭状态
                 if (mMenuState == MENU_CLOSED) {
                     View view = findChildViewUnder(x, y);
@@ -103,9 +107,9 @@ public class SwipeMenuRecyclerView extends RecyclerView {
                     tv_delete = holder.tvDelete;
                     //获得分享图片
                     iv_share = holder.iv_share;
+                    setOnClickListener();
                     //获取两个按钮的宽度
                     mMaxLength = tv_top.getWidth() + tv_delete.getWidth();
-                    initClickListener();
                 }else if(mMenuState == MENU_OPEN){
                     //(mItemLayout获取在Activity左边界的值/也就是滑动的距离
                     // dx:在X轴上的偏移量,  dy:在y轴上的偏移量,  时间)
@@ -140,6 +144,8 @@ public class SwipeMenuRecyclerView extends RecyclerView {
                     mItemLayout.scrollBy(dx, 0);
 
                 } else if (Math.abs(dx) > 10) {//如果水平移动距离大于10像素的话，recyclerView不会上下滑动
+                    return true;
+                }else {
                     return true;
                 }
                 if (isItemMoving || mMenuState == 3) {//如果菜单正在打开就不能上下滑动
@@ -221,7 +227,7 @@ public class SwipeMenuRecyclerView extends RecyclerView {
     /**
      *  为item设置点击事件
      */
-    public void initClickListener(){
+    public void setOnClickListener(){
         //顶置
         tv_top.setOnClickListener(new OnClickListener() {
             @Override

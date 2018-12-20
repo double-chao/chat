@@ -3,10 +3,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <ListView
+        android:id="@+id/lv_contacts"
         android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </ListView>
+
+    <com.lcc.administrator.weight.SortNavBar
+        android:id="@+id/sortNav_bar"
+        android:layout_width="30dp"
         android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/tv_selected"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:text="A"
+        android:layout_centerInParent="true"
+        android:background="@drawable/textview_round_border"
         android:gravity="center"
-        android:text="通讯录"
-        android:textSize="25sp" />
+        android:textSize="42sp"
+        android:visibility="gone"
+        android:textColor="#fff"
+        />
+
 </RelativeLayout>

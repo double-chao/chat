@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MMusicActivity"></activity>
+        <activity android:name=".MMusicActivity" android:parentActivityName=".MainActivity"></activity>
         <service android:name=".MMusicService"></service>
     </application>
 

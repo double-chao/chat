@@ -17,6 +17,7 @@ import android.os.Message;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
@@ -39,8 +40,7 @@ import java.util.Date;
  * @author lcc
  * created at 2018/12/3
  */
-public class MMusicActivity extends AppCompatActivity implements View.OnClickListener {
-
+public class MMusicActivity extends BaseActivity implements View.OnClickListener {
 
     //设置音乐播放模式
     private int i = 0;
@@ -74,6 +74,24 @@ public class MMusicActivity extends AppCompatActivity implements View.OnClickLis
     private RotateAnimation rotateAnimation2 = null;
     private String TAG = "MusicActivity";
 
+    private MMusicService mMusicService;
+    private String path;
+    private boolean bound;
+
+    @Override
+    public void setUpTitle() {
+        setToolbarTitle("音乐");
+    }
+
+    @Override
+    public void setUpHomeEnable() {
+        setToolbarHomeEnable(true);
+    }
+
+    @Override
+    public void setUpNavIcon() {
+
+    }
 
     //Handler实现向主线程进行传值
     private Handler handler = new Handler() {
@@ -116,6 +134,15 @@ public class MMusicActivity extends AppCompatActivity implements View.OnClickLis
         Intent intent = getIntent();
         //获取position 从LogicFragment获取值
         position = intent.getIntExtra("position", 0);
+
+
+//        Intent intent1 = new Intent(MMusicActivity.this,MMusicService.class);
+//                intent1.putExtra("position",position);
+//                startService(intent1);
+//                path = Common.mMusicList.get(position).getPath();
+//                bindService(intent1,connection,Context.BIND_AUTO_CREATE);
+
+
 
         mediaPlayer = new MediaPlayer();
         prevAndNextPlaying(Common.mMusicList.get(position).getPath());
@@ -226,21 +253,22 @@ public class MMusicActivity extends AppCompatActivity implements View.OnClickLis
      * 设置背景专辑图片
      */
     private void setAlbumBip() {
+        Bitmap bitmap1,bm,bitmap;
         if (Common.mMusicList.get(position).albumBip != null) { //获取到了专辑图片
             //将专辑虚化
-            Bitmap bgbm = BlurUtil.doBlur(Common.mMusicList.get(position).albumBip, 10, 5);
+            bitmap = BlurUtil.doBlur(Common.mMusicList.get(position).albumBip, 10, 5);
             //设置虚化后的专辑图片为背景
-            bgImgV.setImageBitmap(bgbm);
+            bgImgV.setImageBitmap(bitmap);
             //BitmapFactory.decodeResource用于根据给定的资源ID从指定的资源文件中解析、创建Bitmap对象。
-            Bitmap bitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.play_page_disc);
+            bitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.play_page_disc);
             //将专辑图片放到圆盘中
-            Bitmap bm = MergeImage.mergeThumbnailBitmap(bitmap1, Common.mMusicList.get(position).albumBip);
+            bm = MergeImage.mergeThumbnailBitmap(bitmap1, Common.mMusicList.get(position).albumBip);
             discImgV.setImageBitmap(bm);
         } else { //歌曲没有专辑图片 自定义放一张图片作为专辑图片背景虚化
-            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.avatar);
+            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.avatar);
             bgImgV.setImageBitmap(bitmap);
-            Bitmap bitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.play_page_disc);
-            Bitmap bm = MergeImage.mergeThumbnailBitmap(bitmap1, bitmap);
+            bitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.play_page_disc);
+            bm = MergeImage.mergeThumbnailBitmap(bitmap1, bitmap);
             discImgV.setImageBitmap(bm);
         }
     }
@@ -492,6 +520,12 @@ public class MMusicActivity extends AppCompatActivity implements View.OnClickLis
         if (mediaPlayer != null) {
             mediaPlayer.stop();
         }
+
+
+//        if (bound){
+//            unbindService(connection);
+//            bound= false;
+//        }
     }
 
 
@@ -558,21 +592,21 @@ public class MMusicActivity extends AppCompatActivity implements View.OnClickLis
 //    }
 
 
-//    private ServiceConnection connection = new ServiceConnection() {
-//        @Override
-//        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-//            MMusicService.MusicBinder binder = (MMusicService.MusicBinder)iBinder;
-//            mMusicService = binder.getService();
-//            mMusicService.playMusic(path);
-//            bound=true;
-//        }
-//
-//        @Override
-//        public void onServiceDisconnected(ComponentName componentName) {
-//            bound = false;
-//        }
-//    };
-//
+    private ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            MMusicService.MusicBinder binder = (MMusicService.MusicBinder)iBinder;
+            mMusicService = binder.getService();
+            mMusicService.playMusic(path);
+            bound=true;
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+            bound = false;
+        }
+    };
+
 //    @Override
 //    protected void onDestroy() {
 //        if (bound){
@@ -581,4 +615,5 @@ public class MMusicActivity extends AppCompatActivity implements View.OnClickLis
 //        }
 //        super.onDestroy();
 //    }
+
 }

@@ -1,10 +1,14 @@
 package com.lcc.administrator.mymusic;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,7 +20,7 @@ import java.util.List;
  * @author lcc
  * created at 2018/11/29
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private final String TAG = "MainActivity";
 
@@ -42,6 +46,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initViewPage();
         initTabButton();
+    }
+
+    @Override
+    public void setUpTitle() {
+        setToolbarTitle("WeChat");
+    }
+
+    @Override
+    public void setUpHomeEnable() {
+
+    }
+
+    @Override
+    public void setUpNavIcon() {
+
     }
 
     /**
@@ -173,4 +192,38 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     *  返回键  或者 home键弹出的Dialog
+     * @param keyCode
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK || keyCode == KeyEvent.KEYCODE_HOME){
+            final View view = LayoutInflater.from(this).inflate(R.layout.layout_dialog_exit,null);
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setTitle("确定退出？");
+            builder.setView(view);
+            //退出按钮
+            builder.setPositiveButton("退出", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    MainActivity.this.finish();
+                }
+            });
+            //取消按钮
+            builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.dismiss();
+                }
+            });
+            builder.setCancelable(true);
+            builder.create().show();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
 }

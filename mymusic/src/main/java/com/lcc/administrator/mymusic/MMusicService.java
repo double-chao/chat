@@ -20,7 +20,7 @@ public class MMusicService extends Service {
     public static MediaPlayer mediaPlayer = new MediaPlayer();
     private int position;
 
-//    private final IBinder iBinder = new MusicBinder();
+    private final IBinder iBinder = new MusicBinder();
 
     public MMusicService (){
 
@@ -32,28 +32,12 @@ public class MMusicService extends Service {
         return null;
     }
 
-//    class MusicBinder extends Binder{
-//
-//        public MMusicService getService(){
-//            return MMusicService.this;
-//        }
-//    }
-//
+    class MusicBinder extends Binder{
 
-
-//    public void playMusic(String path){
-//        if(mediaPlayer.isPlaying()){
-//            mediaPlayer.stop();
-//        }
-//        mediaPlayer.reset();
-//        try {
-//            mediaPlayer.setDataSource(path);
-//            mediaPlayer.prepare();
-//            mediaPlayer.start();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+        public MMusicService getService(){
+            return MMusicService.this;
+        }
+    }
 
     @Override
     public boolean onUnbind(Intent intent) {
@@ -90,6 +74,20 @@ public class MMusicService extends Service {
     public void onDestroy() {
         mediaPlayer.stop();
         super.onDestroy();
+    }
+
+    public void playMusic(String path){
+        if(mediaPlayer.isPlaying()){
+            mediaPlayer.stop();
+        }
+        mediaPlayer.reset();
+        try {
+            mediaPlayer.setDataSource(path);
+            mediaPlayer.prepare();
+            mediaPlayer.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
